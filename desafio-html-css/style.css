@@ -1,0 +1,215 @@
+/* Aplicando reset no css padrão */
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+* {
+  --background: #FFFFFF;
+  --text: #000000;
+  --background2: #0056FB;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  /* width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.left h1 {
+  width: 100%;
+  max-width: 560px;
+  font-size: 28px;
+  margin-bottom: 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  z-index: 9;
+}
+
+form::before {
+  content: '';
+  position: absolute;
+  background-image: url('assets/code.svg');
+  background-color: 90px;
+  background-repeat: no-repeat;
+  z-index: 1;
+  width: 90px;
+  height: 90px;
+  opacity: 0.3;
+  bottom: -50px;
+  right: -35px
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type="submit"] {
+  border-radius: 4px;
+  padding: 0 14px;
+  min-width: 100%;
+  margin-bottom: 16px;
+}
+input[type="text"], input[type="password"], input[type="email"] {
+  height: 42px;
+  border: 1px solid var(--text);
+}
+
+input[type="text"]::placeholder, input[type="password"]::placeholder, input[type="email"]::placeholder {
+  color: var(--text);
+}
+
+input[type="submit"] {
+  background-color: var(--background2);
+  height: 42px;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--background);
+  transition: background-color 0.5s linear;
+  z-index: 2;
+}
+
+input[type="submit"]:hover {
+  background-color: #008AFB;
+}
+
+.area {
+  width: 100%;
+  max-width: 560px;
+  margin-bottom: 18px;
+}
+
+.area span {
+  align-self: flex-start;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.area a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 400;
+  margin-left: 5px;
+}
+
+.right {
+  flex: 1;
+  background-color: var(--background2);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.img-info {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 18px;
+}
+
+.right h2 {
+  max-width: 400px;
+  font-size: 38px;
+  color: var(--background);
+  margin-bottom: 18px;
+}
+
+.right p {
+  max-width: 400px;
+  color: var(--background);
+  line-height: 150%;
+}
+
+/* pagina cadastro */
+
+.terms {
+  background-color: red;
+}
+
+
+@media (max-width: 720px) {
+  #container {
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .left {
+    width: 85%;
+    padding: 24px 0;
+  }
+
+  .left h1 {
+    margin-bottom: 18px;
+  }
+
+  form::before {
+    background-size: 80px;
+    width: 80px;
+    height: 80px;
+    bottom: -46px;
+    right: -28px;
+  }
+
+  .right {
+    width: 100%;
+    padding: 32px 0;
+    height: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+
+    form::before {
+      background-size: 64px;
+      width: 64px;
+      height: 64px;
+      bottom: -28px;
+      right: -20px;
+    }
+
+    .img-info {
+      max-width: 360px;
+      width: 85%;
+    }
+
+    .right h2 {
+      max-width: 360px;
+      font-size: 32px;
+      padding: 0 14px;
+      text-align: center;
+    }
+    
+    .right p {
+      padding: 0 14px;
+      text-align: justify;
+      max-width: 360px;
+    }
+}
+
+
+
+
+ 
