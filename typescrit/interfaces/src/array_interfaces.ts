@@ -26,7 +26,7 @@ interface NomesProps {
 let frontend: NomesProps = {
     tecnologia: [
         { id: '12', nome: 'ReactJS' },
-        { id: '1', nome: 'Typescript', descricao: 'tecnologia muito top'}
+        { id: '1', nome: 'Typescript', descricao: 'Orientação a Objetos'}
     ]
 }
 
