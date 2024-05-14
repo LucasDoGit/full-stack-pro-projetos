@@ -1,15 +1,38 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import './App.css'
 
 function App() {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const firstRender = useRef(true);
+  
   const [taskInput, setTaskInput] = useState("")
   const [tasks, setTasks] = useState<string[]>([])
+  
   const [editTask, setEditTask] = useState({
     enabled: false,
     task: ""
   })
 
-  function handleRegister(){
+  useEffect(() => {
+    const tarefasSalvas = localStorage.getItem("@tasks")
+
+    if(tarefasSalvas){
+      setTasks(JSON.parse(tarefasSalvas));
+    }
+  }, [])
+
+  useEffect(() => {
+    if(firstRender.current){
+      firstRender.current = false;
+      return;
+    }
+
+    localStorage.setItem("@tasks", JSON.stringify(tasks))
+    console.log("use effect foi chamado")
+
+  }, [tasks])
+
+  const handleRegister = useCallback(() => {
     if(!taskInput){
       alert("Preencha o nome da tarefa")
       return;
@@ -22,7 +45,8 @@ function App() {
     
     setTasks(tarefas => [...tarefas, taskInput])
     setTaskInput("")
-  }
+    
+  }, [taskInput, tasks])
 
   function handleSaveEdit(){
     const findIndexTask = tasks.findIndex(task => task === editTask.task)
@@ -46,6 +70,9 @@ function App() {
   }
 
   function handleEdit(item: string){
+
+    inputRef.current?.focus();
+
     setTaskInput(item)
     setEditTask({
       enabled: true,
@@ -53,24 +80,37 @@ function App() {
     })
   }
 
+  const totalTarefas = useMemo(() => {
+    return tasks.length
+  }, [tasks])
+
   return (
-    <div>
-      <h1>Teste</h1>
-      <input
-        placeholder='Digite o nome da tarefa...'
-        value={taskInput}
-        onChange={(e) => setTaskInput(e.target.value) }
-      />
-      <button onClick={handleRegister}>
-        {editTask.enabled ? "Atualizar tarefa" : "Adicionar tarefa"}
-      </button>
+    <div className='container'>
+      <h1 className='titulo'>Lista de tarefas</h1>
+      <div className='container-input'>
+        <input
+          className='input'
+          placeholder='Digite o nome da tarefa...'
+          value={taskInput}
+          onChange={(e) => setTaskInput(e.target.value) }
+          ref={inputRef}
+        />
+        <button onClick={handleRegister} className='button'>
+          {editTask.enabled ? "Atualizar tarefa" : "Adicionar tarefa"}
+        </button>
+      </div>
+
       <hr/>
 
+      <strong className='tasks-count'>Você tem {totalTarefas} tarefas</strong>
+
       {tasks.map((task) => (
-        <section key={task}>
+        <section key={task} className='task'>
           <span>{task}</span>
-          <button onClick={ () => handleEdit(task) }>Editar</button>
-          <button onClick={ () => handleDelete(task) }>Excluir</button>
+          <div>
+            <button  className='button-task editar' onClick={ () => handleEdit(task) }>Editar</button>
+            <button  className='button-task apagar' onClick={ () => handleDelete(task) }>Excluir</button>
+          </div>
         </section>
       ))}
     </div>
