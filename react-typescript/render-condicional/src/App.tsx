@@ -1,34 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState } from 'react';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  // const [signed, setSigned] = useState(false);
+  const [username, setUsername] = useState("lucastimoteo")
+  
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      {/* <button onClick={ () => setSigned(true) }>Entrar</button> */}
+
+      {/* 1º PRIMEIRA FORMA DE RENDERIZACAO CONDICIONAL */}
+
+      {/* {signed ? (
+        <div>
+          <h1>Bem vindo Lucas Timoteo</h1>
+          <button onClick={ () => setSigned(false) }>Sair</button>
+        </div>
+      ) : (
+        <h1>Nenhum usuario logado!</h1>
+      )} */}
+
+      {/* 2º SEGUNDA FORMA DE RENDERIZACAO CONDICIONAL */}
+
+      {/* {signed && (
+        <div>
+          <h1>Bem vindo Lucas Timoteo</h1>
+          <p>usuário online!</p>
+          <button onClick={ () => setSigned(false) }>Sair</button>
+        </div>
+      )} */}
+
+      {/* usando outras variaveis para renderizacao condicional */}
+
+      {username.length >= 8 && <h1>Username muito grande!</h1>}
+
+    </div>
   )
 }
 
