@@ -23,7 +23,7 @@ async function delayFetch(url: string, delay: number){
 // }
 
 async function getData() {
-  const data = await delayFetch("https://api.github.com/users/LucasDoGit/repos", 3500)
+  const data = await delayFetch("https://api.github.com/users/LucasDoGit/repos", 1500)
   return data
 }
 
