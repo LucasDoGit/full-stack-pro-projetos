@@ -1,6 +1,7 @@
+import { Metadata } from "next"
 
 
-export const metadata = {
+export const metadata: Metadata = {
     title: "Painel do Site",
     description: "Esse é o painel demonstrativo do site"
 }

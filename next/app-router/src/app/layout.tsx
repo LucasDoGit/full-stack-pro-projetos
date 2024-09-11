@@ -5,6 +5,20 @@ import { Header } from "@/components/Header";
 export const metadata: Metadata = {
   title: "Conhecendo NextJS",
   description: "Site acadêmico para aprender NextJS",
+  keywords: ['NextJS', 'Estudos', 'Sujeito Programador'],
+  openGraph: {
+    images: ['https://sujeitoprogramador.com/wp-content/uploads/2021/06/thumpost.png']
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: true,
+    }
+  }
 };
 
 export default function RootLayout({
